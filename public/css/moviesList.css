@@ -1,0 +1,10 @@
+.moviesList-main{
+    display: flex;
+    margin: auto;
+    text-align: center;
+    justify-content: center;
+}
+
+body{
+background-color: rgb(230, 200, 200);
+}

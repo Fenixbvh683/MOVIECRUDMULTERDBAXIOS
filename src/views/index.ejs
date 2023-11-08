@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <%- include('partials/head') %>
+  
+  <body>
+   <%- include('partials/header') %>
+
+   <main class="mt-5">
+    
+<!-- BENNERE Swiper -->
+<div class="swiper mySwiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide"><img src="/img/demo.jpg" alt=""></div>
+    <div class="swiper-slide"><img src="/img/hulk.jpg" alt=""></div>
+    <div class="swiper-slide"><img src="/img/islam.jpg" alt=""></div>
+    <div class="swiper-slide"><img src="/img/multi.jpg" alt=""></div>
+  </div>
+  <div class="swiper-pagination"></div>
+</div>
+
+<div class="row d-flex justify-content-center aling-items-center p-3">
+
+  <div class="card w-50 mt-5">
+    <div class="card-body">
+      <h1 class="card-title row d-flex justify-content-center aling-items-center p-3"><%= title %></h1>
+      <h4 class="card-text row d-flex justify-content-center aling-items-center p-3">Bienvenidos a <%= title %></h4>
+      <p class="btn btn-outline-danger"><a href="/movies">Listado de Películas</a></p>
+    </div>
+  </div>
+
+  </div>
+
+</div>
+
+
+   </main>
+   <%- include('partials/scripts') %>
+  </body>
+</html>

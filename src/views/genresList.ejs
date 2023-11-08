@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('partials/head') %>
+
+<body>
+    <%- include('partials/header') %>
+
+    <main class="">
+
+        <div class="col-12 col-md-6 mx-auto mt-3">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home </a></li>
+                            <li class="breadcrumb-item-active" aria-current="page"> Generos</li>
+                        </ol>
+                     </nav>
+                     <a href="/genres/add" class="btn btn-outline-dark">Agregar Genero</a>
+                </div>
+
+                <div class="card-body">
+                    
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">Orden</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Ranking</th>
+                                <th scope="col">Active</th>
+                                <th scope="col">Peliculas</th>
+                                <th scope="col">Acciones</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <% genres.forEach(genre => { %>
+                                 
+                                  <tr>
+                
+                                    <th scope="row"><%= genre.id %></th>
+                                    <td><%= genre.name %></td>
+                                    <td><%= genre.ranking %></td>
+                                    <td>
+                                      
+                                      <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" <%= genre.active && 'checked' %> id="flexSwitchCheckDefault">
+                                      </div>
+                                      
+                                      </td>
+                                      <td>
+                                        <% if (genre.movies.length) { %>
+                                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                                          <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<%= genre.id %>>" aria-expanded="false" aria-controls="flush-collapse<%= genre.id %>>">
+                                               
+                                                  <span><%= genre.movies.length %>  Peliculas</span>
+                                               
+                                              </button>
+                                            </h2>
+                                            <div id="flush-collapse<%= genre.id %>>" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                              <div class="accordion-body">
+                                                <ul>
+                                                  <% genre.movies.forEach(movie => { %>
+                                                   <li><a href="/movies/detail/<%= movie.id %>"><%= movie.title %></a></li>
+                                                  <% }) %>
+                                                  
+                                                </ul>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          
+                                        </div>
+                                        <% }else{ %>
+
+                                          <div class="alert alert-success" role="alert">
+                                            <span class="alert-warning">No hay peliculas</span>
+                                          </div>
+                                          
+                                         <% } %>
+                                      </td>
+                                                      
+                                    <td>
+                
+                                          <div>
+                                            <a href="/genres/detail/<%= genre.id %>" class="btn btn-outline-dark"><i class="fa-solid fa-eye"></i></a>
+                                            <a href="/genres/edit/<%= genre.id %>" class="btn btn-outline-dark"><i class="fa-solid fa-pen-to-square"></i></a>
+                                            
+                                            <a href="/genres/delete/<%= genre.id %>" class="btn btn-outline-dark"><i class="fa-solid fa-trash"></i></i></a>
+                                          </div>
+                
+                                    </td>
+                                                    
+                                  </tr>
+                
+                                <% }) %>
+                            </tbody>
+                        </table>
+                    
+
+                </div>
+            </div>
+        </div>
+    
+    </main>
+    <%- include('partials/scripts') %>
+</body>
+
+</html>
